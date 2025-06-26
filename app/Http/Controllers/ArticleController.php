@@ -9,7 +9,6 @@ use App\Models\ArticleGallery;
 use App\Models\ArticleShow;
 use App\Models\ArticleShowGallery;
 use App\Models\ArticleTag;
-use App\Models\GuardianWeb;
 use App\Models\SourceCode;
 use App\Models\Template;
 use Illuminate\Support\Str;
@@ -171,25 +170,17 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, $status = null, $filterweb = null)
+    public function index(Request $request, $status = null)
     {
         $count = new \stdClass();
         $count->all = $this->formatCount(ArticleShow::count());
         $count->schedule = $this->formatCount(ArticleShow::where('status', 'schedule')->count());
         $count->publish = $this->formatCount(ArticleShow::where('status', 'publish')->count());
         $count->private = $this->formatCount(ArticleShow::where('status', 'private')->count());
-
-        $web = GuardianWeb::all();
         
         $filter = $status === 'schedule' ? 1 : 0;
 
         $data = Article::with('articleshow')
-            ->when($filterweb === 'main', function ($query) {
-                $query->whereNull('guardian_web_id');
-            })
-            ->when($filterweb && $filterweb != 'main' && $filterweb != 'all', function ($query) use ($filterweb) {
-                $query->where('guardian_web_id', $filterweb);
-            })
             ->when($request->search, function ($query) use ($request) {
                 $query->where('judul', 'like', '%' . $request->search . '%');
             })
@@ -209,28 +200,20 @@ class ArticleController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('admin.article.index' ,compact('data', 'count', 'web', 'status', 'filterweb'));
+        return view('admin.article.index' ,compact('data', 'count', 'status'));
     }
 
-    public function indexspintax(Request $request, $status = null, $filterweb = null)
+    public function indexspintax(Request $request, $status = null)
     {
         $count = new \stdClass();
         $count->all = $this->formatCount(ArticleShow::count());
         $count->schedule = $this->formatCount(ArticleShow::where('status', 'schedule')->count());
         $count->publish = $this->formatCount(ArticleShow::where('status', 'publish')->count());
         $count->private = $this->formatCount(ArticleShow::where('status', 'private')->count());
-
-        $web = GuardianWeb::all();
         
         $filter = $status === 'schedule' ? 1 : 0;
 
         $data = Article::with('articleshow')->where('article_type', 'spintax')
-            ->when($filterweb === 'main', function ($query) {
-                $query->whereNull('guardian_web_id');
-            })
-            ->when($filterweb && $filterweb != 'main' && $filterweb != 'all', function ($query) use ($filterweb) {
-                $query->where('guardian_web_id', $filterweb);
-            })
             ->when($request->search, function ($query) use ($request) {
                 $query->where('judul', 'like', '%' . $request->search . '%');
             })
@@ -250,28 +233,20 @@ class ArticleController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('admin.article.index' ,compact('data', 'count', 'web', 'status', 'filterweb'));
+        return view('admin.article.index' ,compact('data', 'count', 'status'));
     }
     
-    public function indexunique(Request $request, $status = null, $filterweb = null)
+    public function indexunique(Request $request, $status = null)
     {
         $count = new \stdClass();
         $count->all = $this->formatCount(ArticleShow::count());
         $count->schedule = $this->formatCount(ArticleShow::where('status', 'schedule')->count());
         $count->publish = $this->formatCount(ArticleShow::where('status', 'publish')->count());
         $count->private = $this->formatCount(ArticleShow::where('status', 'private')->count());
-
-        $web = GuardianWeb::all();
         
         $filter = $status === 'schedule' ? 1 : 0;
 
         $data = Article::with('articleshow')->where('article_type', 'unique')
-            ->when($filterweb === 'main', function ($query) {
-                $query->whereNull('guardian_web_id');
-            })
-            ->when($filterweb && $filterweb != 'main' && $filterweb != 'all', function ($query) use ($filterweb) {
-                $query->where('guardian_web_id', $filterweb);
-            })
             ->when($request->search, function ($query) use ($request) {
                 $query->where('judul', 'like', '%' . $request->search . '%');
             })
@@ -291,7 +266,7 @@ class ArticleController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('admin.article.index' ,compact('data', 'count', 'web', 'status', 'filterweb'));
+        return view('admin.article.index' ,compact('data', 'count', 'status'));
     }
 
     public function spin($id, Request $request) 
@@ -321,8 +296,7 @@ class ArticleController extends Controller
         $tag = ArticleTag::all();
         $template = Template::all();
         $category = ArticleCategory::all();
-        $guardian = GuardianWeb::all();
-        return view('admin.article.create-spintax', compact('tag', 'category', 'template', 'guardian'));
+        return view('admin.article.create-spintax', compact('tag', 'category', 'template'));
     }
 
     /**
@@ -375,7 +349,6 @@ class ArticleController extends Controller
         $newarticle->user_id = Auth::id();
         $newarticle->judul = $request->judul;
         $newarticle->article = $request->article;
-        $newarticle->guardian_web_id = $request->guardian;
         $newarticle->article_type = 'spintax';
 
         // Cek apakah link adalah YouTube
@@ -529,8 +502,7 @@ class ArticleController extends Controller
         $categoryid = $article->articlecategory->pluck('id')->toArray();
         $category = ArticleCategory::whereNotIn('id', $categoryid)->get();
         $template = Template::all();
-        $guardian = GuardianWeb::all();
-        return view('admin.article.edit-spintax', compact('article', 'tag', 'category', 'template', 'guardian'));
+        return view('admin.article.edit-spintax', compact('article', 'tag', 'category', 'template'));
     }
 
     /**
@@ -591,7 +563,6 @@ class ArticleController extends Controller
 
         $article->judul = $request->judul;
         $article->article = $request->article;
-        $article->guardian_web_id = $request->guardian;
 
 
         if (preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $request->link, $matches)) {

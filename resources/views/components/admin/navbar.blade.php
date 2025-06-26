@@ -20,12 +20,6 @@
                 <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Dashboard
                 </p>
             </x-admin.navbutton>
-            <x-admin.navbutton route="guardian.index" :active="['guardian.index', 'guardian.create', 'guardian.show']">
-                <div class="min-w-5 h-5 mx-0.5">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 1H5a4 4 0 0 0-4 4v14a4 4 0 0 0 4 4h14a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4ZM9 4a1 1 0 1 1-1 1 1 1 0 0 1 1-1ZM5 4a1 1 0 1 1-1 1 1 1 0 0 1 1-1Zm14 5H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2Zm0-3a1 1 0 1 1 1-1 1 1 0 0 1-1 1Z" fill="currentcolor" class="fill-232323"></path></svg>
-                </div>
-                <p class=" line-clamp-1 duration-300" :class="open ? 'opacity-0 lg:opacity-100' : 'opacity-0'">Guardian Web</p>
-            </x-admin.navbutton>
             <x-admin.navbutton route="user.index" :active="['user.index', 'user.create', 'user.show']">
                 <div class="min-w-5 h-5 mx-0.5">
                     <svg fill="none" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M1.5 0A1.5 1.5 0 0 0 0 1.5v12A1.5 1.5 0 0 0 1.5 15h12a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 13.5 0h-12Zm5 9A3.5 3.5 0 0 0 3 12.5v1a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-1A3.5 3.5 0 0 0 8.5 9h-2ZM5 5.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0Z" fill="currentColor" fill-rule="evenodd" class="fill-000000"></path></svg>

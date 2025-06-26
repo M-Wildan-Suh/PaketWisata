@@ -9,7 +9,6 @@ use App\Models\ArticleGallery;
 use App\Models\ArticleShow;
 use App\Models\ArticleShowGallery;
 use App\Models\ArticleTag;
-use App\Models\GuardianWeb;
 use App\Models\PhoneNumber;
 use App\Models\Template;
 use Illuminate\Http\Request;
@@ -48,8 +47,7 @@ class ArticleShowController extends Controller
         $category = ArticleCategory::all();
         $template = Template::all();
         $phonenumber = PhoneNumber::where('type', '!=', 'main')->get();
-        $guardian = GuardianWeb::all();
-        return view('admin.article.create-unique', compact('template', 'tag', 'phonenumber', 'category', 'guardian'));
+        return view('admin.article.create-unique', compact('template', 'tag', 'phonenumber', 'category'));
     }
 
     /**
@@ -103,7 +101,6 @@ class ArticleShowController extends Controller
             $newarticle->user_id = Auth::id();
             $newarticle->judul = $request->judul;
             $newarticle->article = $request->article;
-            $newarticle->guardian_web_id = $request->guardian;
     
             if ($request->status === "schedule") {
                 $newarticle->schedule = true;
@@ -303,8 +300,7 @@ class ArticleShowController extends Controller
         $category = ArticleCategory::whereNotIn('id', $categoryid)->get();
         $template = Template::all();
         $phonenumber = PhoneNumber::where('type', '!=', 'main')->where('id', '!=', $articleShow->phone_number_id)->get();
-        $guardian = GuardianWeb::all();
-        return view('admin.article.edit-unique', compact('articleShow', 'tag', 'template', 'phonenumber', 'category', 'guardian'));
+        return view('admin.article.edit-unique', compact('articleShow', 'tag', 'template', 'phonenumber', 'category'));
     }
 
     /**
@@ -367,7 +363,6 @@ class ArticleShowController extends Controller
 
         $newarticle->judul = $request->judul;
         $newarticle->article = $request->article;
-        $newarticle->guardian_web_id = $request->guardian;
 
         if ($request->status === "schedule") {
             $newarticle->schedule = true;

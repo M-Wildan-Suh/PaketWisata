@@ -81,18 +81,8 @@
                             <option value="private">Private</option>
                         </select>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <p class=" flex text-nowrap flex-nowrap">G<span class=" hidden sm:block">uardian</span> : </p>
-                        <select class=" text-neutral-600 border-neutral-600 w-full text-sm border pl-2 px-8 py-0.5 rounded-full" x-model="web" name="web" id="">
-                            <option value="all">All</option>
-                            <option value="main">Main</option>
-                            @foreach ($web as $item)
-                                <option value="{{$item->id}}">{{$item->url}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <a :href="`{{ preg_replace('#/status/[^/]+/web/[^/]+#', '',url()->current()) }}/status/${status}/web/${web}`">
-                        <button class=" w-full bg-byolink-1 hover:bg-byolink-3 duration-300 rounded-full text-white px-2 py-0.5 text-sm">Cari</button>
+                    <a :href="`{{ preg_replace('#/status/[^/]+#', '', url()->current()) }}/status/${status}/`">
+                        <button class=" bg-byolink-1 hover:bg-byolink-3 duration-300 rounded-full text-white px-2 py-0.5 text-sm">Cari</button>
                     </a>
                 </div>
             </div>

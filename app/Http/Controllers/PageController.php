@@ -19,14 +19,9 @@ class PageController extends Controller
             return $request->route('page', 1); // default ke halaman 1
         });
         $data = ArticleShow::where('status', 'publish')
-            ->whereHas('articles', function ($query) {
-                $query->whereNull('guardian_web_id');
-            })
             ->latest()->paginate(12);
 
-        $category = ArticleCategory::whereHas('articles', function ($query) {
-            $query->whereNull('guardian_web_id');
-        })->get();
+        $category = ArticleCategory::all();
 
         $data->transform(function ($data) {
             $data->date = Carbon::parse($data->created_at)->locale('id')->translatedFormat('d F Y');
@@ -57,9 +52,6 @@ class PageController extends Controller
             $data = ArticleShow::whereHas('articles.user', function ($query) use ($username) {
                     $query->where('slug', $username);
                 })
-                ->whereHas('articles', function ($query) {
-                    $query->whereNull('guardian_web_id');
-                })
                 ->where('status', 'publish')->latest()->paginate(12);
 
             $user = User::where('slug', $username)->first();
@@ -71,9 +63,6 @@ class PageController extends Controller
             $data = ArticleShow::whereHas('articles.articleCategory', function ($query) use ($category) {
                     $query->where('slug', $category);
                 })
-                ->whereHas('articles', function ($query) {
-                    $query->whereNull('guardian_web_id');
-                })
                 ->where('status', 'publish')->latest()->paginate(12);
 
             $data->withPath("/kategori/{$category}/page");
@@ -84,9 +73,6 @@ class PageController extends Controller
             $data = ArticleShow::whereHas('articles.articleTag', function ($query) use ($tag) {
                     $query->where('slug', $tag);
                 })
-                ->whereHas('articles', function ($query) {
-                    $query->whereNull('guardian_web_id');
-                })
                 ->where('status', 'publish')->latest()->paginate(12);
 
             $data->withPath("/tag/{$tag}/page");
@@ -95,17 +81,12 @@ class PageController extends Controller
             $title = 'Tag : '.$tag;
         } elseif ($request->search) {
             $data = ArticleShow::where('judul', 'like', '%' . $request->search . '%')->where('status', 'publish')
-                ->whereHas('articles', function ($query) {
-                    $query->whereNull('guardian_web_id');
-                })->latest()->paginate(12);
+                ->latest()->paginate(12);
 
             $data->withPath("/artikel/page");
             $title = 'Pecaharian : '.$request->search;
         } else {
             $data = ArticleShow::where('status', 'publish')
-                ->whereHas('articles', function ($query) {
-                    $query->whereNull('guardian_web_id');
-                })
                 ->latest()->paginate(12);
 
             $data->withPath("/artikel/page");
@@ -119,9 +100,7 @@ class PageController extends Controller
             return $data;
         });
         
-        $category = ArticleCategory::whereHas('articles', function ($query) {
-            $query->whereNull('guardian_web_id');
-        })->get();
+        $category = ArticleCategory::all();
 
         return view('guest.article', compact('data', 'title', 'page', 'category'));
     }
@@ -151,17 +130,13 @@ class PageController extends Controller
         $data->date = Carbon::parse($data->created_at)->locale('id')->translatedFormat('d F Y');
         // dd($data->articles);
         
-        $category = ArticleCategory::whereHas('articles', function ($query) {
-            $query->whereNull('guardian_web_id');
-        })->get();
+        $category = ArticleCategory::all();
 
         return view('guest.business', compact('data', 'template', 'category'));
     }
 
     public function notFound() {
-        $category = ArticleCategory::whereHas('articles', function ($query) {
-            $query->whereNull('guardian_web_id');
-        })->get();
+        $category = ArticleCategory::all();
 
         return view('guest.pagenotfound', compact('category'));
     }
