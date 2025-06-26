@@ -32,9 +32,6 @@ class PageController extends Controller
 
         $trend = ArticleShow::orderBy('view', 'desc')
             ->where('status', 'publish')
-            ->whereHas('articles', function ($query) {
-                $query->whereNull('guardian_web_id');
-            })
             ->take(6)->get();
             
         $data->withPath("/artikel/page");
