@@ -43,17 +43,31 @@
             </div>
         </div>
         <style>
+            .article table {
+                width: 100%;
+                max-width: 100% !important; 
+            }
 
             .article a {
                 font-weight: 700;
                 color: {{$template->desc_second_color ?? '#1d588d'}};
             }
+
+            .article td,
+            .article th {
+                border: solid 1px !important;
+                word-break: break-word;
+                overflow-wrap: break-word;
+                border-color: {{$template->desc_text_color}} !important; 
+            }
+
             .article ol {
                 padding-left: 16px;
                 list-style-type: decimal;
             }
 
             .article ul {
+                padding-inline-start: 16px !important;
                 padding-left: 16px;
                 list-style-type: disc;
             }
@@ -61,6 +75,8 @@
             .article span {
                 font-size: inherit !important;
                 color: inherit !important;
+                word-wrap: break-word;
+                font-size: inherit !important;
             }
 
             .article p {

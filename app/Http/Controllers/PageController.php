@@ -21,13 +21,30 @@ class PageController extends Controller
         $data = ArticleShow::where('status', 'publish')
             ->latest()->paginate(12);
 
-        $category = ArticleCategory::all();
+        $category = ArticleCategory::all()->take(3);
 
         $data->transform(function ($data) {
             $data->date = Carbon::parse($data->created_at)->locale('id')->translatedFormat('d F Y');
             $data->articles->articletag;
             $data->articles->user ;
             return $data;
+        });
+
+        $category->transform(function ($cat) {
+            // Ambil semua ArticleShow dari setiap artikel di kategori
+            $cat->articles = ArticleShow::whereHas('articles.articleCategory', function ($query) use ($cat) {
+                    $query->where('slug', $cat->slug);
+                })
+                ->where('status', 'publish')->latest()->paginate(12);
+
+            $cat->articles->transform(function ($data) {
+                $data->date = Carbon::parse($data->created_at)->locale('id')->translatedFormat('d F Y');
+                $data->articles->articletag;
+                $data->articles->user ;
+                return $data;
+            });
+
+            return $cat;
         });
 
         $trend = ArticleShow::orderBy('view', 'desc')
@@ -139,23 +156,6 @@ class PageController extends Controller
     }
 
     public function test() {
-        $duplikatJudul = ArticleShow::select('judul')
-            ->groupBy('judul')
-            ->havingRaw('COUNT(*) > 1')
-            ->pluck('judul');
-
-        if ($duplikatJudul->isEmpty()) {
-            return response()->json([
-                'status' => 'ok',
-                'message' => 'Tidak ada judul yang duplikat.',
-                'data' => []
-            ]);
-        }
-
-        return response()->json([
-            'status' => 'duplikat',
-            'message' => 'Ditemukan judul yang duplikat.',
-            'data' => $duplikatJudul
-        ]);
+        return view('guest.test');
     }
 }

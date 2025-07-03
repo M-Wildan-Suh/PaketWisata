@@ -22,11 +22,9 @@ class Article extends Model
     {
         return $this->hasMany(ArticleGallery::class);
     }
-    public function user() {
+    public function user() 
+    {
         return $this->belongsTo(User::class);
-    }
-    public function guardian(){
-        return $this->belongsTo(GuardianWeb::class);
     }
     public function articletag()
     {
