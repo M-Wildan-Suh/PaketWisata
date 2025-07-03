@@ -4,7 +4,7 @@
         <div class=" w-full max-w-[1080px] mx-auto flex items-center gap-10 justify-between">
             <a href="{{route('home')}}">
                 <div class=" h-10 sm:h-12 flex items-center overflow-hidden">
-                    <p class=" text-3xl sm:text-4xl font-bold">Bizlink</p>
+                    <p class=" text-3xl sm:text-4xl font-bold">PaketWisata</p>
                     {{-- <img src="{{asset('assets/images/logo.png')}}" alt=""> --}}
                 </div>
             </a>
