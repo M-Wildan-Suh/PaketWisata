@@ -60,7 +60,9 @@ class ArticleShowController extends Controller
             $validated = $request->validate([
                 'judul' => 'required|max:255|unique:' . ArticleShow::class,
                 'category' => 'array',
+                'category.*' => 'max:255',
                 'tag' => 'array',
+                'tag.*' => 'max:255',
                 'article' => 'required',
             ]);
     
@@ -324,7 +326,9 @@ class ArticleShowController extends Controller
                     Rule::unique('article_shows')->ignore($articleShow->id),
                 ],
                 'category' => 'array',
+                'category.*' => 'max:255',
                 'tag' => 'array',
+                'tag.*' => 'max:255',
                 'article' => 'required',
             ]);
     
