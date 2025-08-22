@@ -1,90 +1,105 @@
 {{-- Footer --}}
-<div class=" w-full">
+<div class="w-full bg-byolink-1 text-white py-10 px-6">
     {{ $additional ?? '' }}
-    <div id="kontak" class=" w-full bg-byolink-1 pt-6 sm:pt-10 pb-6 divide-y-2 divide-white space-y-6">
-        <div class=" w-full px-4 md:px-8 py-4">
-            <div class=" w-full max-w-[1080px] mx-auto grid grid-cols-3 gap-4 sm:gap-6 text-white">
-                <div class=" col-span-3 md:col-span-1 space-y-6">
-                    <div class=" space-y-2">
-                        <div class=" min-w-44 h-10 sm:h-12 flex items-start overflow-hidden">
-                            <p class=" text-3xl sm:text-4xl font-bold text-white">PaketWisata</p>
-                            {{-- <img src="{{asset('assets/images/logo.png')}}" alt=""> --}}
-                        </div>
-                        <p class=" text-sm">Sebarkan bisnis anda dengan ribuan artikel.</p>
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row gap-8">
+            
+            {{-- Left Section - Brand Info --}}
+            <div class="md:w-1/3">
+                <h2 class="text-3xl font-bold tracking-wide">PaketWisata</h2>
+                <p class="mt-4 text-sm text-white/80">
+                    PaketWisata menyediakan berbagai pilihan paket liburan terbaik dengan harga kompetitif. 
+                    Kami menawarkan pengalaman wisata yang tak terlupakan dengan pelayanan profesional.
+                </p>
+            </div>
+
+            {{-- Middle Section - Navigation --}}
+            <div class="md:w-1/4">
+                <h3 class="text-lg font-semibold mb-4">Navigasi Cepat</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="{{ route('home') }}" class="hover:underline hover:text-byolink-2 transition">Beranda</a></li>
+                            <li><a href="{{ route('allarticle') }}" class="hover:underline hover:text-byolink-2 transition">Artikel</a></li>
+                            <li><a href="{{ request()->routeIs('business') ? route('home') : '' }}#kontak" class="hover:underline hover:text-byolink-2 transition">Kontak</a></li>
+                        </ul>
                     </div>
-                    <div class=" space-y-4">
-                        <div class=" flex flex-row gap-2">
-                            <div class=" w-1 rounded-full bg-white"></div>
-                            <p class=" font-semibold">Social Media</p>
-                        </div>
-                        <div class=" flex gap-2">
-                            <a href="https://www.instagram.com/jasawebsite.biz/" target="__blank">
-                                <div class=" bg-white text-byolink-1 w-8 aspect-square rounded-lg overflow-hidden p-1 hover:scale-105 duration-300">
-                                    <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h256v256H0z"></path><circle cx="128" cy="128" r="32" fill="currentColor" class="fill-000000"></circle><path d="M172 28H84a56 56 0 0 0-56 56v88a56 56 0 0 0 56 56h88a56 56 0 0 0 56-56V84a56 56 0 0 0-56-56Zm-44 148a48 48 0 1 1 48-48 48 48 0 0 1-48 48Zm52-88a12 12 0 1 1 12-12 12 12 0 0 1-12 12Z" fill="currentColor" class="fill-000000"></path></svg>
-                                </div>
-                            </a>
-                            <a href="https://www.tiktok.com/@www.webz.biz" target="__blank">
-                                <div class=" bg-white text-byolink-1 w-8 aspect-square rounded-lg overflow-hidden p-1 hover:scale-105 duration-300">
-                                    <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h256v256H0z"></path><path d="M232 84v40a8 8 0 0 1-8 8 103.2 103.2 0 0 1-48-11.7V156a76 76 0 1 1-89.4-74.8 8 8 0 0 1 6.5 1.7 7.8 7.8 0 0 1 2.9 6.2v41.6a7.9 7.9 0 0 1-4.6 7.2A20 20 0 1 0 120 156V28a8 8 0 0 1 8-8h40a8 8 0 0 1 8 8 48 48 0 0 0 48 48 8 8 0 0 1 8 8Z" fill="currentColor" class="fill-000000"></path></svg>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <div></div>
                 </div>
-                <div class=" space-y-4">
-                    <div class=" flex flex-row gap-2">
-                        <div class=" w-1 rounded-full bg-white"></div>
-                        <p class=" font-semibold">Navigasi</p>
-                    </div>
-                    <div class=" text-white flex flex-col gap-2 text-sm pl-4">
-                        <a href="{{route('home')}}" class=" list-item hover:underline duration-300">Beranda</a>
-                        <a href="{{route('allarticle')}}" class=" list-item hover:underline duration-300">Artikel</a>
-                        <a href="{{ request()->routeIs('business') ? route('home') : '' }}#kontak" class=" list-item hover:underline duration-300">Kontak</a>
-                    </div>
-                </div>
-                <div class="  col-span-2 md:col-span-1 space-y-4">
-                    <div class=" flex flex-row gap-2">
-                        <div class=" w-1 rounded-full bg-white"></div>
-                        <p class=" font-semibold">Kontak Kami</p>
-                    </div>
-                    <div class=" flex flex-col gap-2">
-                        <div class=" flex items-center gap-2">
-                            <div class=" min-w-4 w-4 aspect-square text-main">
-                                <svg viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><g clip-rule="evenodd" fill-rule="evenodd"><path fill="none" d="M0 0h128v128H0z"></path><path d="M46.114 32.509c-1.241-2.972-2.182-3.085-4.062-3.161a36.272 36.272 0 0 0-2.144-.074c-2.446 0-5.003.715-6.546 2.295-1.88 1.919-6.545 6.396-6.545 15.576 0 9.181 6.695 18.06 7.598 19.303.941 1.24 13.053 20.354 31.86 28.144 14.707 6.095 19.071 5.53 22.418 4.816 4.89-1.053 11.021-4.667 12.564-9.03 1.542-4.365 1.542-8.09 1.09-8.88-.451-.79-1.693-1.24-3.573-2.182-1.88-.941-11.021-5.456-12.751-6.058-1.693-.639-3.31-.413-4.588 1.393-1.806 2.521-3.573 5.08-5.003 6.622-1.128 1.204-2.972 1.355-4.514.715-2.069-.864-7.861-2.898-15.008-9.256-5.53-4.928-9.291-11.06-10.381-12.904-1.091-1.881-.113-2.973.752-3.988.941-1.167 1.843-1.994 2.783-3.086.941-1.091 1.467-1.655 2.069-2.935.64-1.241.188-2.521-.263-3.462-.452-.943-4.213-10.124-5.756-13.848zM63.981 0C28.699 0 0 28.707 0 63.999c0 13.996 4.514 26.977 12.187 37.512L4.212 125.29l24.6-7.862C38.93 124.125 51.004 128 64.019 128 99.301 128 128 99.291 128 64.001 128 28.709 99.301.002 64.019.002h-.037V0z" fill="currentColor" class="fill-67c15e"></path></g></svg>
+            </div>
+
+            {{-- Right Section - Contact & Newsletter --}}
+            <div id="kontak" class="md:w-5/12">
+                <div class="flex flex-col space-y-6">
+                    
+                    {{-- Contact Info --}}
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3">Hubungi Kami</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-start gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                                </svg>
+                                <span>Komplek Sapta Taruna PU kujangsari blok B1 no 10, KOTA BANDUNG, BANDUNG KIDUL, JAWA BARAT, ID, 40267</span>
                             </div>
-                            <a href="https://wa.me/+6285798765798" target="__blank">
-                                <p class=" text-sm hover:underline">+62 857-9876-5798</p>
-                            </a>
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                </svg>
+                                <span>+62 857 9876 5798</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                </svg>
+                                <span>info@paketwisata.com</span>
+                            </div>
                         </div>
-                        <div class=" flex items-center gap-2">
-                            <div class=" min-w-4 w-4 aspect-square text-main">
-                                <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h256v256H0z"></path><path d="m222 158.4-46.9-20a15.6 15.6 0 0 0-15.1 1.3l-25.1 16.7a76.5 76.5 0 0 1-35.2-35L116.3 96a15.9 15.9 0 0 0 1.4-15.1L97.6 34a16.3 16.3 0 0 0-16.7-9.6A56.2 56.2 0 0 0 32 80c0 79.4 64.6 144 144 144a56.2 56.2 0 0 0 55.6-48.9 16.3 16.3 0 0 0-9.6-16.7ZM157.4 47.7a72.6 72.6 0 0 1 50.9 50.9 8 8 0 0 0 7.7 6 7.6 7.6 0 0 0 2.1-.3 7.9 7.9 0 0 0 5.6-9.8 88 88 0 0 0-62.2-62.2 8 8 0 1 0-4.1 15.4ZM149.1 78.6a40.4 40.4 0 0 1 28.3 28.3 7.9 7.9 0 0 0 7.7 6 6.4 6.4 0 0 0 2-.3 7.9 7.9 0 0 0 5.7-9.8 55.8 55.8 0 0 0-39.6-39.6 8 8 0 1 0-4.1 15.4Z" fill="currentColor" class="fill-000000"></path></svg>
-                            </div>
-                            <a href="tel:+6285798765798" target="__blank">
-                                <p class=" text-sm hover:underline">+62 857-9876-5798</p>
-                            </a>
-                        </div>
-                        <div class=" flex items-center gap-2">
-                            <div class=" min-w-4 w-4 aspect-square text-main">
-                                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 4c-7.73 0-14 6.27-14 14 0 10.5 14 26 14 26s14-15.5 14-26c0-7.73-6.27-14-14-14zm0 19c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="currentColor" class="fill-000000"></path><path d="M0 0h48v48H0z" fill="none"></path></svg>
-                            </div>
-                            <a href="https://maps.app.goo.gl/J1eVkmTBPpgw52JH6" target="__blank">
-                                <p class=" text-sm hover:underline">Komplek Sapta Taruna PU kujangsari blok B1 no 10, KOTA BANDUNG, BANDUNG KIDUL, JAWA BARAT, ID, 40267</p>
-                            </a>
+                    </div>
+
+                    {{-- Social Media --}}
+                    <div class="mt-6">
+                        <h3 class="text-lg font-semibold mb-3">Informasi Lain</h3>
+                       <div class="flex space-x-4">
+    <!-- WhatsApp -->
+    <a href="https://wa.me/+6285798765798" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-byolink-1 hover:scale-110 duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-5 h-5 fill-current"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L4 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 127.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    </a>
+
+    <!-- Telepon -->
+    <a href="tel:+6285798765798" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-byolink-1 hover:scale-110 duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 fill-current"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+    </a>
+
+    <!-- Lokasi -->
+    <a href="https://maps.app.goo.gl/J1eVkmTBPpgw52JH6" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-byolink-1 hover:scale-110 duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-5 h-5 fill-current"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/jasawebsite.biz/" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-byolink-1 hover:scale-110 duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-5 h-5 fill-current"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@www.webz.biz" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-byolink-1 hover:scale-110 duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-5 h-5 fill-current"><path d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.2A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z"/></svg>
+    </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class=" text-center text-white pt-6">
-            <p class="text-sm">
-                © 2025 bizlink.sites.id | Developed by
-                <span class="hover:underline">
-                    <a href="https://jasawebsite.biz" target="_blank">
-                        Jasawebsitebiz
-                    </a>
-                </span>
-            </p>
+
+        <hr class="w-full border-t border-white/30 mt-8" />
+
+        {{-- Copyright --}}
+        <div class="flex flex-col md:flex-row justify-between items-center mt-6 text-xs">
+            <p>© 2025 bizlink.sites.id | All Rights Reserved</p>
+            <div class="flex gap-4 mt-3 md:mt-0">
+                <a href="https://jasawebsite.biz" class="hover:underline" target="_blank">Developed by Jasawebsitebiz</a>
+            </div>
         </div>
     </div>
 </div>

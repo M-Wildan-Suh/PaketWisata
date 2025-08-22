@@ -14,10 +14,15 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
-            colors: {
-                'byolink-1' : '#3b82f6',
-                'byolink-2' : '#fac534',
-                'byolink-3' : '#1e40af',
+            // colors: {
+            //     'byolink-1' : '#3b82f6',
+            //     'byolink-2' : '#fac534',
+            //     'byolink-3' : '#1e40af',
+                colors: {
+    'byolink-1': '#6BAA75',
+    'byolink-2': '#F4D19B', 
+    'byolink-3': '#87B9E0',
+
             }
         },
     },
