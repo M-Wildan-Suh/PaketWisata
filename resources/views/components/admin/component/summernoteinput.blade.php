@@ -134,43 +134,33 @@
     });
 </script>
 <style>
+    .note-editor div {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
     /* Override gaya default Tailwind untuk h1 hingga h6 */
-    .note-editor h1, h2, h3, h4, h5, h6 {
-    font-size: inherit !important;nt;
-    color: inherit !important;
-    line-height: inherit !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    .note-editor strong, p, h1, h2, h3, h4, h5, h6 {
+        color: inherit !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     td.selected-cell {
         background-color: rgba(100, 149, 237, 0.3); /* light blue highlight */
     }
 
+    .note-editor font {
+        color: inherit;
+    }
+
     /* Kustomisasi tambahan untuk masing-masing elemen heading */
-    .note-editor table {
-        table-layout: fixed;
-        width: 100%;
-        max-width: 100% !important;
-        border-color: black !important;
-    }
-
-    .note-editor td, .note-editor th {
-        width: auto;
-        word-break: break-word;
-        overflow-wrap: break-word;
-        border-color: black !important;
-        font-size: 0.875rem !important;
-        line-height: 1.25rem !important;
-    }
-
     .note-editor ol {
         padding-left: 16px;
         list-style-type: decimal;
     }
 
     .note-editor ul {
-        padding-inline-start: 16px !important;
         padding-left: 16px;
         list-style-type: disc;
     }
@@ -224,10 +214,6 @@
     }
 
     @media screen and (min-width: 640px) {
-        .note-editor td {
-            font-size: 1rem !important;
-            line-height: 1.5rem !important;
-        }
         .note-editor p {
             font-size: 1rem !important;
             line-height: 1.5rem !important;

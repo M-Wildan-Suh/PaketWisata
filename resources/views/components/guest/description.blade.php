@@ -43,31 +43,42 @@
             </div>
         </div>
         <style>
-            .article table {
-                width: 100%;
-                max-width: 100% !important; 
+            .article div {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            .article strong,
+            span,
+            p,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                color: inherit !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }
 
             .article a {
                 font-weight: 700;
-                color: {{$template->desc_second_color ?? '#1d588d'}};
+                color: {{ $template->desc_second_color ?? '#1d588d' }};
             }
 
-            .article td,
-            .article th {
-                border: solid 1px !important;
-                word-break: break-word;
-                overflow-wrap: break-word;
-                border-color: {{$template->desc_text_color}} !important; 
+            .article font {
+                color: inherit;
             }
 
             .article ol {
+                color: inherit !important;
                 padding-left: 16px;
                 list-style-type: decimal;
             }
 
             .article ul {
-                padding-inline-start: 16px !important;
+                color: inherit !important;
                 padding-left: 16px;
                 list-style-type: disc;
             }
@@ -75,8 +86,6 @@
             .article span {
                 font-size: inherit !important;
                 color: inherit !important;
-                word-wrap: break-word;
-                font-size: inherit !important;
             }
 
             .article p {
@@ -118,16 +127,18 @@
                 font-size: 0.5rem !important;
                 line-height: 0.75rem !important;
             }
-            
+
             @media screen and (min-width: 640px) {
                 .article p {
                     font-size: 1rem !important;
                     line-height: 1.5rem !important;
                 }
+
                 .article li {
                     font-size: 1rem !important;
                     line-height: 1.5rem !important;
                 }
+
                 .article h3 {
                     font-size: 1.25rem !important;
                     line-height: 1.75rem !important;
