@@ -287,8 +287,8 @@ class ArticleShowController extends Controller
                 $newgalleryshow->save();
             }
     
+            return redirect()->route('article.index')->with('success', 'Artikel berhasil disimpan.');
         });
-        return redirect()->route('article.index')->with('success', 'Artikel berhasil disimpan.');
     }
 
     /**
