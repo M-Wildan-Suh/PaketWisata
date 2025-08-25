@@ -134,7 +134,7 @@
     });
 </script>
 <style>
-    .note-editor div {
+    .note-editable div {
         width: 100% !important;
         max-width: 100% !important;
     }
