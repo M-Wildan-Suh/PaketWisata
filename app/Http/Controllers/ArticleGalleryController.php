@@ -48,6 +48,10 @@ class ArticleGalleryController extends Controller
                     
                     // Define the image storage path
                     $imagePath = public_path('storage/images/article/gallery/');
+
+                    if (!is_dir($imagePath)) {
+                        mkdir($imagePath, 0777, true); // recursive mkdir
+                    }
                     
                     $manager = new ImageManager(new Driver());
                     $imageOptimized = $manager->read($image->getPathname());
