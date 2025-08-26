@@ -4,8 +4,8 @@
         <div class="swiper-wrapper">
             @foreach ($data->articleshowgallery as $item)
                 <div class="swiper-slide w-full aspect-[3/4] rounded-md overflow-hidden relative">
-                    <a data-fancybox="gallery" aria-label="Gallery" href="{{asset('storage/images/article/gallery/'. $item->image)}}" class="">
-                        <img src="{{asset('storage/images/article/gallery/'. $item->image)}}" class=" w-full h-full object-cover" alt="flex w-full aspect-[3/4] overflow-hidden">
+                    <a data-fancybox="gallery" aria-label="Gallery" href="{{asset('storage/images/article/gallery/'. $item->image)}}" class="flex w-full aspect-[3/4] overflow-hidden">
+                        <img src="{{asset('storage/images/article/gallery/'. $item->image)}}" class=" w-full h-full object-cover" alt="">
                     </a>
                 </div>
             @endforeach
