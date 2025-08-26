@@ -8,7 +8,9 @@
                 </a>
             @endforeach
         </div>
-        <p class="text-lg sm:text-3xl font-bold">{{$data->judul}}</p>
+        <div class=" w-full">
+            <p class="text-lg sm:text-3xl font-bold">{{$data->judul}}</p>
+        </div>
         <div class=" flex gap-4 sm:gap-6 items-center text-opacity-60 text-sm sm:text-base">
             <a href="{{ route('author', ['username' => $data->articles->user->slug]) }}" class=" flex gap-1.5 sm:gap-2 items-center">
                 <div style="color: {{$template->desc_second_color ?? '#1d588d'}}" class=" w-4 aspect-square">
