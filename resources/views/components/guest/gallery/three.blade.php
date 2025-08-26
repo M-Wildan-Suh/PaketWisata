@@ -3,7 +3,7 @@
         @foreach ($data->articleshowgallery as $item)
             <div class=" w-full aspect-[4/3] rounded-md overflow-hidden relative">
                 <a data-fancybox="gallery" aria-label="Gallery" href="{{asset('storage/images/article/gallery/'. $item->image)}}" class="">
-                    <img src="{{asset('storage/images/article/gallery/'. $item->image)}}" class=" w-full h-full object-cover" alt="">
+                    <img src="{{asset('storage/images/article/gallery/'. $item->image)}}" class=" w-full h-full object-cover" alt="flex w-full aspect-[4/3] overflow-hidden">
                 </a>
             </div>
         @endforeach
