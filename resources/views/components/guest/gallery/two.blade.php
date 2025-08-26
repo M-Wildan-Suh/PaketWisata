@@ -1,4 +1,4 @@
-<div class=" w-full max-w-[600px] mx-auto">
+<div class=" flex w-full max-w-[600px] mx-auto">
     <div class="swiper rounded-md overflow-hidden">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
