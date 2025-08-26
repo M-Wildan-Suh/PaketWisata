@@ -1,5 +1,5 @@
 <div class=" w-full max-w-[600px] mx-auto">
-    <div class="swiper h-full max-h-full rounded-md overflow-hidden">
+    <div class="swiper rounded-md overflow-hidden">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             @foreach ($data->articleshowgallery as $item)
